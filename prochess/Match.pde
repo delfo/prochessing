@@ -11,12 +11,12 @@ class Match {
   println(c1.type);
   println(c1.col);
   println(c1.initialPosition);
-    String moves[] = loadStrings("nakamura.pgn");
-    this.parse(moves);
-    println("there are " + moves.length + " lines");
-for (int i = 0 ; i < moves.length; i++) {
-  println(moves[i]);
-}
+//    String moves[] = loadStrings("nakamura.pgn");
+//    this.parse(moves);
+//    println("there are " + moves.length + " lines");
+//for (int i = 0 ; i < moves.length; i++) {
+//  println(moves[i]);
+//}
     
   }
   
