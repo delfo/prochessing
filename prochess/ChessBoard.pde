@@ -48,7 +48,7 @@ class ChessBoard {
   
   String getPosition (Chess c)
   {
-    return c.path[c.path.size-1];
+    return c.path.get(c.path.size()-1);
   }
   
 

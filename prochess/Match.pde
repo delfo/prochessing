@@ -6,7 +6,7 @@ class Match {
   // A constructor
   Match(){
     cs = new ChessBoard();
-     println(cs.set[0].type);
+     println(cs.getposition);
     c1 = new Chess(KING,WHITE,"A1");
   println(c1.type);
   println(c1.col);
