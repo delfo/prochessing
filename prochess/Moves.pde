@@ -28,3 +28,5 @@ class Moves {
     println(m);
   }
 }
+}
+

@@ -1,0 +1,37 @@
+1. white first
+2. white-black-white
+3. if NOT capital letter -> pawn
+    a. if a pawn and 'x' a piece is taken (the one in destination cell)
+4. if capital letter -> piece or special move
+	a. if 'O' arrocco
+	b. else Piece move
+5. if piece move and 'x' a piece is taken (the one in destination cell)
+
+PieceEligibilityCheck (Actual ChessBoard, Type of piece, DestinationCell) -> return the piece which moves
+
+Match
+- additional data
+- moves
+* loadMatch --> load list of moves in PGN format and parse rawMoves by removing indexes and spaces and appending each individual move to 'moves'
+* prochess --> here the magic happens
+
+ChessBoard
+- wChess
+- bChess
+* create -> init wChess and bChess
+* read -> give back a matrix representation of chessboard 8x8xpiece (0 for empty cells)
+* update -> process individual moves by updating wChess and/or bChess
+* remove 
+
+ChessPiece
+- type (P,K,N,B,R,K,Q)
+- color (black,white)
+- path (list of positions)
+- status (alive, dead, zombie)
+* create -> set fields (type, color, position)
+* read -> get path tail
+* update -> append new position to path
+* remove -> set as dead
+* zombie -> set as zombie
+
+Move

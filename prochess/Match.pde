@@ -1,27 +1,58 @@
 class Match {
-  // Some variables
-  public  ChessBoard cs;
-  public Chess c1;
-   String moves;
-  // A constructor
+
+  ChessBoard board;
+   String[] data;
+   String[] moves;
+   
+  
   Match(){
-    cs = new ChessBoard();
-    // println(cs.getposition);
-    c1 = new Chess(KING,WHITE,"A1");
-  println(c1.type);
-  println(c1.col);
-  println(c1.initialPosition);
-//    String moves[] = loadStrings("nakamura.pgn");
-//    this.parse(moves);
-//    println("there are " + moves.length + " lines");
-//for (int i = 0 ; i < moves.length; i++) {
-//  println(moves[i]);
-//}
-    
+    board = new ChessBoard();
+    moves = new String[100];
+    loadMatch();    
   }
   
-  void parse(String[] moves){
-
-  }
-
+  void loadMatch (){
+    
+    //Load match
+    println("Load new match");
+    data = loadStrings("game.txt");
+    for (int i = 0; i < data.length; i++) { 
+      println(data[i]); 
+      } 
+    
+    //Remove Additional Info
+    String rawMoves = join(data, ' ');
+    int index = rawMoves.indexOf(']');
+    while (index >= 0) {
+      rawMoves = rawMoves.substring( index+1, rawMoves.length());
+      index = rawMoves.indexOf(']');
+    }
+    println(rawMoves);
+    
+    //Split moves
+    index = rawMoves.indexOf('.');
+    int i = 0;
+     while (index >= 0) {
+       //White move
+       rawMoves = rawMoves.substring( index+2, rawMoves.length());
+       index = rawMoves.indexOf(' ');
+       moves[i] = rawMoves.substring( 0, index);
+       println(moves[i]);
+       i++;
+       //Black move
+       rawMoves = rawMoves.substring( index+1, rawMoves.length());
+       index = rawMoves.indexOf(' ');
+       if (index == -1)
+         {
+         moves[i] = rawMoves;
+         break;
+         }
+       moves[i] = rawMoves.substring( 0, index);
+       println(moves[i]);
+       i++;
+       
+       //Next couple
+      index = rawMoves.indexOf('.');
+     }
+     
 }
