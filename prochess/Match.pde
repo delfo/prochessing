@@ -2,12 +2,13 @@ class Match {
 
   ChessBoard board;
    String[] data;
-   String[] moves;
+   StringList moves;
+   int numberOfMoves;
    
   
   Match(){
     board = new ChessBoard();
-    moves = new String[100];
+    moves = new StringList();
     loadMatch();    
   }
   
@@ -27,7 +28,6 @@ class Match {
       rawMoves = rawMoves.substring( index+1, rawMoves.length());
       index = rawMoves.indexOf(']');
     }
-    println(rawMoves);
     
     //Split moves
     index = rawMoves.indexOf('.');
@@ -36,23 +36,27 @@ class Match {
        //White move
        rawMoves = rawMoves.substring( index+2, rawMoves.length());
        index = rawMoves.indexOf(' ');
-       moves[i] = rawMoves.substring( 0, index);
-       println(moves[i]);
+       moves.append(rawMoves.substring( 0, index));
        i++;
        //Black move
        rawMoves = rawMoves.substring( index+1, rawMoves.length());
        index = rawMoves.indexOf(' ');
-       if (index == -1)
+       if (index == -1) //Last move, store the result
          {
-         moves[i] = rawMoves;
+         moves.append(rawMoves);
          break;
          }
-       moves[i] = rawMoves.substring( 0, index);
-       println(moves[i]);
+       moves.append(rawMoves.substring( 0, index));
        i++;
        
        //Next couple
       index = rawMoves.indexOf('.');
+      if (index == -1) //Last move, store the result
+         {
+         moves.append(rawMoves.substring(rawMoves.indexOf(' '), rawMoves.length()));
+         break;
+         }
      }
-     
+     numberOfMoves = moves.size()-1; 
+ println(moves.size());    
 }

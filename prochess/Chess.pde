@@ -9,39 +9,38 @@ final int BISHOP = 4;
 final int KNIGHT = 5;
 final int PAWN = 6;
 
+//* create -> set fields (type, color, position)
+//* read -> get path tail
+//* update -> append new position to path
+//* remove -> set as dead
+//* zombie -> set as zombie
 
 
 class Chess {
-  String initialPosition;
-  StringList path;
-  boolean col;
   int type;
-  boolean status;
+  boolean pcolor;
+  StringList path;
+  boolean alive;
+  
 
-  Chess(int t, boolean c, String initPos){
-     type =  t;
-    col = c ;
-    initialPosition = initPos;
-    status = ALIVE;
+  Chess(int _type, boolean _color, String _initPos){
+     type =  _type;
+    pcolor = _color ;
+    path = new StringList();
+    path.append(_initPos);
+    alive = true;
   
   }
   
-  void moveTo(String newcell){
-    path.append (newcell);
-  }
-  
-  String getPosition() {
+  String getPosition(){
     return path.get(path.size());
   }
   
-  StringList getMoves() {
-    return path;
-  }
-
-  int getMovesNumber () {
-    return path.size();
+  void setPosition(String position) {
+    path.append(position);
   }
   
+ 
 
 
 }
