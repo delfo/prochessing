@@ -40,6 +40,13 @@ class Chess {
     path.append(position);
   }
   
+  void remove(){
+   alive = false;
+  }
+  
+  void zombie(){
+   alive = true;
+  }
  
 
 

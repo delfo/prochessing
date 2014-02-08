@@ -34,4 +34,5 @@ ChessPiece
 * remove -> set as dead
 * zombie -> set as zombie
 
-Move
+Prochess
+on key new match

@@ -51,5 +51,28 @@ class ChessBoard {
     return c.path.get(c.path.size()-1);
   }
   
+  Chess getByPosition (String position)
+    {
+    Chess x = new Chess(ROOK,WHITE,"A1");;
+    return x;
+    }
+  
+  Chess[] getByColumn (){
+    Chess[] result;
+    result = new Chess[8];
+    return result;
+  }
+  
+  Chess[] getByType (){
+    Chess[] result;
+    result = new Chess[8];
+    return result;
+  }
+  
+  Chess[] getByLine (){
+   Chess[] result;
+    result = new Chess[8];
+    return result;
+  }
 
 }

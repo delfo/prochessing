@@ -13,14 +13,6 @@ int h = 480;
 int fill = 0;
 Match m;
 
-PGNParser parser;
-PGNSource source;
-//PGNSource source;
-File file;
-
-
-
-
 void setup() {
   size(w, h);
   m = new Match();
@@ -33,8 +25,7 @@ void draw() {
 }
 
 void mouseClicked() {
-    
-   
+      m.nextMove();
   } 
 
 void setfill(){
