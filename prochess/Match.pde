@@ -80,34 +80,44 @@ void parseMatch() {
 void parseMove(String move, boolean wMove){
     
   //which piece is moving?
+  Chess movingChess;
+  
+  boolean xChess; //true if a piece has been catched
+  if (move.indexOf('x') > 0) xChess = true;
+    else xChess = false;
+    
+  boolean matto;
+    if (move.indexOf('+') > 0) matto = true;
+    else matto = false;
+    
   String sourceCell;
-    String destCell = move.substring(move.length()-2, move.length());
+  String destCell = move.substring(move.length()-2, move.length());
     
    //get moving chess
 //DEBUG  
-      println(move); 
-      println(destCell);
    if (isLowerCase(move.charAt(0)) == true) //it's a pawn
       {
       //DEBUG  
-      println("it is a " + wMove + " pawn!");
+      println("it is a " + wMove + " pawn!" + " moving to " + destCell);
+      
+      movingChess = board.getChess('P', wMove, destCell);
       } 
    else
    switch (move.charAt(0)){
      case 'R':
-     println("it is a rook!");
+     println("it is a rook!"+ " moving to " + destCell);
      break;
      case 'N':
-     println("it is a Knight!");
+     println("it is a Knight!"+ " moving to " + destCell);
      break;
      case 'B':
-     println("it is a Bishop!");
+     println("it is a Bishop!"+ " moving to " + destCell);
      break;
      case 'K':
-     println("it is the KING!");
+     println("it is the KING!"+ " moving to " + destCell);
      break;
      case 'Q':
-     println("she is the QUEEN!");
+     println("she is the QUEEN!"+ " moving to " + destCell);
      break;
      case 'O':
      println("arrocco");
@@ -116,15 +126,19 @@ void parseMove(String move, boolean wMove){
      println("What the hell is this?");
      break;
    }
+   if (xChess == true)  println("a piece was catch");
+   if (matto == true)  println("scacco al re");
 }
 
 boolean nextMove(){
   String rawMove;
   if (currentMoveIndex >= numberOfMoves) return false;
   else {
-    rawMove = moves.get(i);
+    rawMove = moves.get(currentMoveIndex);
     parseMove(rawMove, whiteMove );
     whiteMove = !whiteMove;
+    currentMoveIndex++;
+   
     return true;
   }
   

@@ -42,6 +42,10 @@ class ChessBoard {
 
   }
   
+  Chess getChess(char pieceType, boolean pieceColor, String destCell){
+      return set[0]; 
+  }
+  
   void render(){
 
   }
