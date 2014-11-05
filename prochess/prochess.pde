@@ -21,7 +21,21 @@ void setup() {
 
 
 void draw() {
-  
+  if (m.currentMoveIndex < m.numberOfMoves)
+      m.nextMove();
+      else
+      {
+        m.nextMove();
+      println(m.moves); 
+      for (int i=0 ; i < m.board.set.length; i++)
+      {
+        println("TYPE:" + m.board.set[i].type ); 
+        println("PATH:" + m.board.set[i].path ); 
+        println("COLOR:" + m.board.set[i].pcolor ); 
+        println("ALIVE:" + m.board.set[i].alive ); 
+      }
+        noLoop ();
+      }
 }
 
 void mouseClicked() {

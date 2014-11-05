@@ -33,7 +33,7 @@ class Chess {
   }
   
   String getPosition(){
-    return path.get(path.size());
+    return path.get(path.size()-1);
   }
   
   void setPosition(String position) {
@@ -44,7 +44,7 @@ class Chess {
    alive = false;
   }
   
-  void zombie(){
+  void promotion(){
    alive = true;
   }
  

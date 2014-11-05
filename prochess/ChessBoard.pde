@@ -42,8 +42,30 @@ class ChessBoard {
 
   }
   
-  Chess getChess(char pieceType, boolean pieceColor, String destCell){
-      return set[0]; 
+  Chess getChess(int pieceType, boolean pieceColor, String destCell){
+      //scan the set for candidate pieces to move based on TYPE, COLOR, STATUS 
+      Chess[] candidates = new Chess[8];
+      int numberOfCandidates = 0;
+       for (int i = 1 ; i < set.length ; i++){
+         if ((set[i].type == pieceType) && (set[i].pcolor == pieceColor) && (set[i].alive == true))
+         {
+           candidates [numberOfCandidates] = set[i];
+           numberOfCandidates++;
+         }
+       }
+      
+      if  (numberOfCandidates > 1){
+      //solve the conflict
+      }
+      //DEBUG
+//       for ( int i = 0 ; i < numberOfCandidates ; i++){
+//       println(candidates[i].type);
+//        println(candidates[i].pcolor);
+//         println(candidates[i].getPosition());
+//       }
+      //DEBUG
+      
+      return candidates[0]; 
   }
   
   void render(){

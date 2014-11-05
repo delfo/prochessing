@@ -91,7 +91,13 @@ void parseMove(String move, boolean wMove){
     else matto = false;
     
   String sourceCell;
-  String destCell = move.substring(move.length()-2, move.length());
+  //to do define the source cell of moving piece
+  
+  String destCell  ;
+  if (matto)
+    destCell = move.substring(move.length()-3, move.length()-1);
+  else
+   destCell = move.substring(move.length()-2, move.length());
     
    //get moving chess
 //DEBUG  
@@ -100,11 +106,14 @@ void parseMove(String move, boolean wMove){
       //DEBUG  
       println("it is a " + wMove + " pawn!" + " moving to " + destCell);
       
-      movingChess = board.getChess('P', wMove, destCell);
+      movingChess = board.getChess(PAWN, wMove, destCell);
+      sourceCell = movingChess.getPosition();
+      //println(sourceCell);
       } 
    else
    switch (move.charAt(0)){
      case 'R':
+     movingChess = board.getChess(ROOK, wMove, destCell);
      println("it is a rook!"+ " moving to " + destCell);
      break;
      case 'N':
@@ -132,7 +141,14 @@ void parseMove(String move, boolean wMove){
 
 boolean nextMove(){
   String rawMove;
-  if (currentMoveIndex >= numberOfMoves) return false;
+  if (currentMoveIndex >= numberOfMoves)
+   {
+      if (whiteMove == true)
+        println("THE END - WHITE - WIN!");
+        else
+        println("THE END - BLACK - WIN!");
+      return false;
+   }
   else {
     rawMove = moves.get(currentMoveIndex);
     parseMove(rawMove, whiteMove );
